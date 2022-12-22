@@ -1,0 +1,36 @@
+Answer:
+
+Since we are trying to compute the diameter of an undirected binary tree with n vertices (I assume this is
+to compute the maximum value of dist(x,y) chosen over all pairs of vertices x and y in T), I will used the recursive
+method to loop through all the left branch and the right branch since we know to get the largest diameter, it has to
+have the qualities:
+    1. the diameter of left sub tree
+    2. the diameter of right sub tree
+    3. the longest path between leave that goes through root node
+
+
+Create a recursive call with root is the base case, if root is None, return 0.
+Else check left and right branch:
+    get height of left and right branch then sum it up as max_tree_height ---> stored as "a"
+    get diameter of left and right branch then get the max of left and right diameter ---> stored as "b"
+once both left and right hit the base case, return max(a, b)
+
+
+Pseudo code:
+height(node):
+    if node is None -> return 0
+    return 1 + max(height(node.left), height(node.right))
+
+diameter(root):
+    if root is None -> return 0
+    else:
+        left_height = height(root.left)
+        right_height = height(root.right)
+        a = left_height + right_height
+
+        left_diameter = diameter(root.left)
+        right_diameter = diameter(root.right)
+        max(left_diameter, right_diameter)
+
+    return max(a, b)
+

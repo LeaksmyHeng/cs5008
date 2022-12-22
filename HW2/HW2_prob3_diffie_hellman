@@ -1,0 +1,15 @@
+Alice and Bob uses Diffie-Hellman Key Exchange Protocol by:
+    - First Bob and Alice agree to use the public exchange which has the generator "g" which is usually a prime number
+    and is small and "n"
+    - Alice would pick a number "a" then she will do the calculation of (g^a) mod n = A
+        -> A will be in the public exchange
+    - Bob would pick a number "b" then he will do the calculation of (g^b) mode n = B
+        -> B will be in the public exchange
+    - In Alice private exchange, she will grab Bob's exchange "B" from the public and combine it with hers.
+        -> Now she would get B^a or (g^ab) mod n
+    - Same with Alice, Bob would grab Alice's key "B" from the public exchange and combine it with his.
+        -> Now he would get A^b or (g^ba) mod n
+
+    => From here Alice and Bob would have the same key. If hacker wants to break that, they will have to reverse
+    engineering this. It is difficult as they only know the key in the public exchange which is g^a and g^b. They
+    could multiple it, but they will only get g^(a+b) which is not the same as g^ab.
